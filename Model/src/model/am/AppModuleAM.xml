@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModuleAM"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="Attachments1"
+    ViewObjectName="model.vo.AttachmentsVO"/>
+  <ViewUsage
+    Name="Users1"
+    ViewObjectName="model.vo.UsersVO">
+    <ViewCriteriaUsage
+      Name="UsersVOCriteria"
+      FullName="model.vo.UsersVO.UsersVOCriteria"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="AttachmentCatagories1"
+    ViewObjectName="model.vo.AttachmentCatagoriesVO"/>
+  <ViewUsage
+    Name="Categories1"
+    ViewObjectName="model.vo.CategoriesVO"/>
+  <ViewUsage
+    Name="AttachmentCatagories2"
+    ViewObjectName="model.vo.AttachmentCatagoriesVO"/>
+  <ViewUsage
+    Name="UploadedAttachemnts1"
+    ViewObjectName="model.vo.UploadedAttachemntsVO"/>
+  <ViewLinkUsage
+    Name="AttachmentCatagoriesFk2VL1"
+    ViewLinkObjectName="model.vo.AttachmentCatagoriesFk2VL"
+    SrcViewUsageName="model.am.AppModuleAM.Categories1"
+    DstViewUsageName="model.am.AppModuleAM.AttachmentCatagories2"
+    Reversed="false"/>
+</AppModule>

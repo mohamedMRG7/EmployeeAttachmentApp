@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Model"
+  Version="12.1.3.10.8"
+  SeparateXMLFiles="true"
+  PackageName="model">
+  <DesignTime>
+    <Attr Name="_jprName" Value="../../Model.jpr"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+    <Attr Name="_NamedConnection" Value="HR"/>
+    <Attr Name="_appModuleNames0" Value="model.am.AppModuleAM"/>
+  </DesignTime>
+  <Containee
+    Name="am"
+    PackageName="model.am"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="eo"
+    PackageName="model.eo"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="vl"
+    PackageName="model.vl"
+    ObjectType="JboPackage"/>
+  <Containee
+    Name="vo"
+    PackageName="model.vo"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+</JboProject>

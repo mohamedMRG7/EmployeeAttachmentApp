@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="uploadAttachmentTF">
+    <default-activity>SetCurrentRowWithKey</default-activity>
+    <transaction>
+      <new-transaction/>
+    </transaction>
+    <data-control-scope>
+      <isolated/>
+    </data-control-scope>
+    <input-parameter-definition id="__1">
+      <name>key</name>
+      <value>#{pageFlowScope.key}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__7">
+      <managed-bean-name>AttachmentBean</managed-bean-name>
+      <managed-bean-class>view.AttachmentBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <view id="empDetailsAndAttachments">
+      <page>/WEB-INF/attachment/empDetailsAndAttachments.jsff</page>
+    </view>
+    <method-call id="SetCurrentRowWithKey">
+      <method>#{bindings.setCurrentRowWithKey.execute}</method>
+      <outcome>
+        <fixed-outcome>setCurrentRowWithKey</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome>
+        <name>taskFlowReturn1</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="taskFlowReturn2">
+      <outcome>
+        <name>taskFlowReturn2</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__4">
+      <from-activity-id>SetCurrentRowWithKey</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>setCurrentRowWithKey</from-outcome>
+        <to-activity-id>empDetailsAndAttachments</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__2">
+      <from-activity-id>empDetailsAndAttachments</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>save</from-outcome>
+        <to-activity-id>taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>rollback</from-outcome>
+        <to-activity-id>taskFlowReturn2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

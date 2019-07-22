@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="empDetailsAndAttachmentsPageDef"
+                
+                Package="attachment" ControllerClass="view.MainBean">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="Users1Iterator" Binds="Users1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="Attachments1Iterator" Binds="Attachments1" DataControl="AppModuleAMDataControl" RangeSize="25"/>
+    <iterator id="AttachmentCatagories1Iterator" Binds="AttachmentCatagories1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+    <iterator id="UploadedAttachemnts2Iterator" Binds="UploadedAttachemnts1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Users1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

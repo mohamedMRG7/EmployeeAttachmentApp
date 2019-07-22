@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="uploadAttachmentTF_uploadAttachmentTF_SetCurrentRowWithKeyPageDef" Package="attachment"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="Users1" RangeSize="25" DataControl="AppModuleAMDataControl" id="Users1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="Users1Iterator" id="setCurrentRowWithKey" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKey" NDValue="#{pageFlowScope.key}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

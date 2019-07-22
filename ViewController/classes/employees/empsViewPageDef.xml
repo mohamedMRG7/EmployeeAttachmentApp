@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="empsViewPageDef"
+                Package="employees">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Users1" RangeSize="25" DataControl="AppModuleAMDataControl" id="Users1Iterator"/>
+    <iterator Binds="AttachmentCatagories1" RangeSize="25" DataControl="AppModuleAMDataControl"
+              id="AttachmentCatagories1Iterator"/>
+    <iterator Binds="Attachments1" RangeSize="25" DataControl="AppModuleAMDataControl" id="Attachments1Iterator"/>
+    <iterator id="UploadedAttachemnts2Iterator" Binds="UploadedAttachemnts1" DataControl="AppModuleAMDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Users1Iterator" id="Users1">
+      <nodeDefinition DefName="model.vo.UsersVO" Name="Users10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="AttachmentCatagories1Iterator" id="AttachmentCatagories1">
+      <nodeDefinition DefName="model.vo.AttachmentCatagoriesVO" Name="AttachmentCatagories10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="CategoryId"/>
+          <Item Value="AttachmentId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="Attachments1Iterator" id="Attachments1">
+      <nodeDefinition DefName="model.vo.AttachmentsVO" Name="Attachments10">
+        <AttrNames>
+          <Item Value="AttachId"/>
+          <Item Value="AttachName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

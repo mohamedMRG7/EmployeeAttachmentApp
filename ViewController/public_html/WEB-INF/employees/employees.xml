@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="employees">
+    <default-activity>empsView</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__5">
+      <name>rowKey</name>
+      <value>#{pageFlowScope.rowKey}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <view id="empsView">
+      <page>/WEB-INF/employees/empsView.jsff</page>
+    </view>
+    <task-flow-call id="uploadAttachmentTF">
+      <task-flow-reference>
+        <document>/WEB-INF/attachment/uploadAttachmentTF.xml</document>
+        <id>uploadAttachmentTF</id>
+      </task-flow-reference>
+      <input-parameter id="__3">
+        <name>key</name>
+        <value>#{data.view_empsViewPageDef.Users1Iterator.currentRowKeyString}</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>empsView</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>details</from-outcome>
+        <to-activity-id>uploadAttachmentTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

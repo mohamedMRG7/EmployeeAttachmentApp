@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">empsView</property>
+      <property
+         name="page">/WEB-INF/employees/empsView.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>empsView&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">254.84473</property>
+      <property
+         name="x">273.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall5">
+      <property
+         name="taskFlowId">uploadAttachmentTF</property>
+      <property
+         name="activityId">uploadAttachmentTF</property>
+      <property
+         name="documentReference">/WEB-INF/attachment/uploadAttachmentTF.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>uploadAttachmentTF&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">251.74707</property>
+      <property
+         name="x">542.6963</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="View2"
+      to="TaskFlowCall5">
+      <property
+         name="fromOutcome">details</property>
+      <property
+         name="sdm:polyPoints">R50,314.0,254.49414,501.6963,251.39648,L50</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+    <af:panelTabbed position="above" id="pt1">
+        <af:showDetailItem id="tab1" text="Details" disclosed="true">
+            <af:panelFormLayout id="pfl1">
+                <af:inputText value="#{bindings.Id.inputValue}" label="#{bindings.Id.hints.label}"
+                              required="#{bindings.Id.hints.mandatory}" readOnly="true"
+                              columns="#{bindings.Id.hints.displayWidth}" maximumLength="#{bindings.Id.hints.precision}"
+                              shortDesc="#{bindings.Id.hints.tooltip}" id="it1">
+                    <f:validator binding="#{bindings.Id.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Id.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Name.inputValue}" label="#{bindings.Name.hints.label}"
+                              required="#{bindings.Name.hints.mandatory}" readOnly="true"
+                              columns="#{bindings.Name.hints.displayWidth}"
+                              maximumLength="#{bindings.Name.hints.precision}"
+                              shortDesc="#{bindings.Name.hints.tooltip}" id="it2">
+                    <f:validator binding="#{bindings.Name.validator}"/>
+                </af:inputText>
+            </af:panelFormLayout>
+        </af:showDetailItem>
+        <af:showDetailItem id="tab2" text="Attachments" itemListener="#{MainBean.tabLisner}"
+                           disclosureListener="#{MainBean.tabeDiscloser}">
+            <af:panelBox text="PanelBox1" id="pb1">
+                <f:facet name="toolbar">
+                    <af:toolbar id="t1">
+                        <af:link text="Save" id="l1" action="save">
+                            <af:clientListener type="click" method="jsClicked"/>
+                            <af:serverListener type="callServerMethod" method="#{MainBean.submitHoverLisner}"/>
+                        </af:link>
+                        <af:link text="Cancel" id="l2" action="rollback">
+                            <af:clientListener type="click" method="jsClicked"/>
+                            <af:serverListener type="callServerMethod" method="#{MainBean.cancelHoverLisner}"/>
+                        </af:link>
+                    </af:toolbar>
+                </f:facet>
+                <af:iterator id="i1" value="#{MainBean.attachmentList}" var="row" binding="#{MainBean.iteratorComp}">
+                    <af:panelGroupLayout id="pgl2" layout="horizontal">
+                        <af:panelFormLayout id="pgl1" labelAlignment="top">
+                            <af:inputFile label="#{row.attachmentName}" id="if1" maximumFiles="4"
+                                          valueChangeListener="#{MainBean.onUploadLisner}"/>
+                            <f:facet name="footer"/>
+                        </af:panelFormLayout>
+                        <af:spacer width="100" height="10" id="s1"/>
+                        <af:panelGroupLayout id="pfl3" layout="vertical">
+                           
+                            <af:iterator id="i21" value="#{row.docInfo}" var="url">
+                                <h:outputLink id="af213" value="#{url.docUrl}" target="_blank">
+                                    <af:outputText value="#{url.title}" id="ot12"/>
+                                </h:outputLink>
+                            </af:iterator>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </af:iterator>
+            </af:panelBox>
+        </af:showDetailItem>
+    </af:panelTabbed>
+</jsp:root>

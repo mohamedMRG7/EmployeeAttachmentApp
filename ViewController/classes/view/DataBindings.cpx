@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.10.8" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/mainView.jspx" usageId="view_mainViewPageDef"/>
+    <page path="/WEB-INF/employees/empsView.jsff" usageId="view_empsViewPageDef"/>
+    <page path="/WEB-INF/attachment/empDetailsAndAttachments.jsff" usageId="view_empDetailsAndAttachmentsPageDef"/>
+    <page path="/userDetailsAndAttahcmentView.jspx" usageId="view_userDetailsAndAttahcmentViewPageDef"/>
+    <page path="/WEB-INF/attachment/uploadAttachmentTF.xml#uploadAttachmentTF@SetCurrentRowWithKey"
+          usageId="view_uploadAttachmentTF_uploadAttachmentTF_SetCurrentRowWithKeyPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_mainViewPageDef" path="view.pageDefs.mainViewPageDef"/>
+    <page id="view_empsViewPageDef" path="employees.empsViewPageDef"/>
+    <page id="view_empDetailsAndAttachmentsPageDef" path="attachment.empDetailsAndAttachmentsPageDef"/>
+    <page id="view_userDetailsAndAttahcmentViewPageDef" path="view.pageDefs.userDetailsAndAttahcmentViewPageDef"/>
+    <page id="view_uploadAttachmentTF_uploadAttachmentTF_SetCurrentRowWithKeyPageDef"
+          path="attachment.uploadAttachmentTF_uploadAttachmentTF_SetCurrentRowWithKeyPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleAMDataControl" Package="model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

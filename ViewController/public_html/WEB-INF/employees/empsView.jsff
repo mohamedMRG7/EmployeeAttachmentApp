@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:table value="#{bindings.Users1.collectionModel}" var="row" rows="#{bindings.Users1.rangeSize}"
+            emptyText="#{bindings.Users1.viewable ? 'No data to display.' : 'Access Denied.'}" rowBandingInterval="0"
+            selectedRowKeys="#{bindings.Users1.collectionModel.selectedRow}"
+            selectionListener="#{bindings.Users1.collectionModel.makeCurrent}" rowSelection="single"
+            fetchSize="#{bindings.Users1.rangeSize}" id="t1">
+    <af:column headerText="#{bindings.Users1.hints.Id.label}" id="c1">
+      <af:outputText value="#{row.Id}" shortDesc="#{bindings.Users1.hints.Id.tooltip}" id="ot1">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.Users1.hints.Id.format}"/>
+      </af:outputText>
+    </af:column>
+    <af:column headerText="#{bindings.Users1.hints.Name.label}" id="c2">
+      <af:link shortDesc="#{bindings.Users1.hints.Name.tooltip}" id="ot2" text="#{row.Name}"
+               action="#{MainBean.toUserDetailsAndAttachments}"/>
+    </af:column>
+  </af:table>
+  <af:table value="#{bindings.AttachmentCatagories1.collectionModel}" var="row"
+            rows="#{bindings.AttachmentCatagories1.rangeSize}"
+            emptyText="#{bindings.AttachmentCatagories1.viewable ? 'No data to display.' : 'Access Denied.'}"
+            rowBandingInterval="0" fetchSize="#{bindings.AttachmentCatagories1.rangeSize}" id="t2" visible="false">
+    <af:column headerText="#{bindings.AttachmentCatagories1.hints.Id.label}" id="c3">
+      <af:outputText value="#{row.Id}" shortDesc="#{bindings.AttachmentCatagories1.hints.Id.tooltip}" id="ot3">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.AttachmentCatagories1.hints.Id.format}"/>
+      </af:outputText>
+    </af:column>
+    <af:column headerText="#{bindings.AttachmentCatagories1.hints.CategoryId.label}" id="c4">
+      <af:outputText value="#{row.CategoryId}" shortDesc="#{bindings.AttachmentCatagories1.hints.CategoryId.tooltip}"
+                     id="ot4">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.AttachmentCatagories1.hints.CategoryId.format}"/>
+      </af:outputText>
+    </af:column>
+    <af:column headerText="#{bindings.AttachmentCatagories1.hints.AttachmentId.label}" id="c5">
+      <af:outputText value="#{row.AttachmentId}"
+                     shortDesc="#{bindings.AttachmentCatagories1.hints.AttachmentId.tooltip}" id="ot5">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.AttachmentCatagories1.hints.AttachmentId.format}"/>
+      </af:outputText>
+    </af:column>
+  </af:table>
+  <af:table value="#{bindings.Attachments1.collectionModel}" var="row" rows="#{bindings.Attachments1.rangeSize}"
+            emptyText="#{bindings.Attachments1.viewable ? 'No data to display.' : 'Access Denied.'}"
+            rowBandingInterval="0" fetchSize="#{bindings.Attachments1.rangeSize}" id="t3" visible="false">
+    <af:column headerText="#{bindings.Attachments1.hints.AttachId.label}" id="c6">
+      <af:outputText value="#{row.AttachId}" shortDesc="#{bindings.Attachments1.hints.AttachId.tooltip}" id="ot6">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.Attachments1.hints.AttachId.format}"/>
+      </af:outputText>
+    </af:column>
+    <af:column headerText="#{bindings.Attachments1.hints.AttachName.label}" id="c7">
+      <af:outputText value="#{row.AttachName}" shortDesc="#{bindings.Attachments1.hints.AttachName.tooltip}" id="ot7"/>
+    </af:column>
+  </af:table>
+</jsp:root>
